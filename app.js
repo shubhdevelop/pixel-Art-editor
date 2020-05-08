@@ -106,3 +106,17 @@ getQuick.addEventListener("click", (e) => {
     quick.style.height = 0;
   }
 });
+
+function touchDraw(e) {
+  let pos = getMousepos(canvas, e);
+  brushState.lastPos[0] = pos.x;
+  brushState.lastPos[1] = pos.y;
+  quick.style.height = 0;
+  slider.value = input.value;
+  save.innerHTML = "Save";
+  toggle = false;
+  cx.fillStyle = brushState.color;
+  cx.fillRect(pos.x, pos.y, brushState.size / 3, brushState.size / 3);
+}
+
+canvas.addEventListener("touchmove", touchDraw);
