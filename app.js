@@ -62,6 +62,8 @@ function draw(e) {
     let pos = getMousePos(canvas, e);
     brushState.lastPos[0] = pos.x;
     brushState.lastPos[1] = pos.y;
+    console.log(pos, "mouse");
+
     quick.style.height = 0;
     slider.value = input.value;
     save.innerHTML = "Save";
@@ -123,6 +125,9 @@ function touchDraw(e) {
   let pos = getTouchPos(canvas, e);
   brushState.lastPos[0] = pos.x;
   brushState.lastPos[1] = pos.y;
+
+  console.log(pos, "touch");
+
   quick.style.height = 0;
   slider.value = input.value;
   save.innerHTML = "Save";
@@ -132,3 +137,12 @@ function touchDraw(e) {
 }
 
 canvas.addEventListener("touchmove", touchDraw);
+document.body.addEventListener("touchmove", noScroll, false);
+document.body.addEventListener("touchstart", noScroll, false);
+document.body.addEventListener("touchend", noScroll, false);
+
+function noScroll(e) {
+  if (e.target.nodeName == "CANVAS") {
+    e.preventDefault();
+  }
+}
