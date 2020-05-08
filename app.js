@@ -35,7 +35,7 @@ for (let i of slider) {
   });
 }
 
-function getMousepos(canvas, evt) {
+function getMousePos(canvas, evt) {
   var rect = canvas.getBoundingClientRect();
   let pos = {
     x: evt.clientX - rect.left,
@@ -45,9 +45,21 @@ function getMousepos(canvas, evt) {
   return pos;
 }
 
+function getTouchPos(canvas, evt) {
+  var rect = canvas.getBoundingClientRect();
+  let pos = {
+    x: evt.targetTouches[0].pageX - rect.left,
+    y: evt.targetTouches[0].pageY - rect.top,
+  };
+
+  console.log(pos);
+
+  return pos;
+}
+
 function draw(e) {
   if (e.buttons == 1) {
-    let pos = getMousepos(canvas, e);
+    let pos = getMousePos(canvas, e);
     brushState.lastPos[0] = pos.x;
     brushState.lastPos[1] = pos.y;
     quick.style.height = 0;
@@ -108,7 +120,7 @@ getQuick.addEventListener("click", (e) => {
 });
 
 function touchDraw(e) {
-  let pos = getMousepos(canvas, e);
+  let pos = getTouchPos(canvas, e);
   brushState.lastPos[0] = pos.x;
   brushState.lastPos[1] = pos.y;
   quick.style.height = 0;
