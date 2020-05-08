@@ -1,0 +1,66 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="menu"><h4>PxlArt</h4></div>
+        <div class="toolbar">
+          <div class="color color-palate">
+            <div class="blue"></div>
+            <div class="red"></div>
+            <div class="yellow"></div>
+            <div class="green"></div>
+            <div class="pink"></div>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="purple"></div>
+          </div>
+          <div class="tool">
+            <div>
+              <input type="range" min="0" max="100" id="range" class="slider" />
+              <input type="text" class="int" />
+            </div>
+          </div>
+          <div class="brushsize"></div>
+        </div>
+        <div class="workspace">
+          <div class="quick">
+            <div class="head">
+              <p>quicktool</p>
+            </div>
+            <form>
+              <input type="range" min="0" max="100" id="range" class="slider" />
+              <label for="range"><p>Brush Size</p></label>
+            </form>
+            <div class="color-palate">
+              <div class="blue"></div>
+              <div class="red"></div>
+              <div class="yellow"></div>
+              <div class="green"></div>
+              <div class="pink"></div>
+              <div class="black"></div>
+              <div class="white"></div>
+              <div class="purple"></div>
+            </div>
+          </div>
+          <canvas width="1000" height="1000"> </canvas>
+        </div>
+        <div class="quick-tool">
+          <ul class="shrink">
+            <li class="action">x</li>
+            <li class="getQuick">Tool</li>
+            <li><input type="color" /></li>
+
+            <li class="save">save</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
