@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>PxlArt</title>
   </head>
   <body>
     <div class="wrapper">
@@ -21,12 +21,24 @@
             <div class="purple"></div>
           </div>
           <div class="tool">
-            <div>
+            <div class="slider-input">
               <input type="range" min="0" max="100" id="range" class="slider" />
               <input type="text" class="int" />
             </div>
+            <div class="color-history">
+              <div class="recent-color"></div>
+              <div class="recent-color"></div>
+              <div class="recent-color"></div>
+              <div class="recent-color"></div>
+              <div class="recent-color"></div>
+              <div class="recent-color"></div>
+            </div>
           </div>
-          <div class="brushsize"></div>
+          <div class="brushsize">
+            <div>
+              <canvas class="preview"></canvas>
+            </div>
+          </div>
         </div>
         <div class="workspace">
           <div class="quick">
@@ -48,7 +60,8 @@
               <div class="purple"></div>
             </div>
           </div>
-          <canvas width="1000" height="1000"> </canvas>
+
+          <canvas class="work" width="1000" height="1000"> </canvas>
         </div>
         <div class="quick-tool">
           <ul class="shrink">

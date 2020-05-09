@@ -54,10 +54,11 @@
   background-color: red;
 }
 canvas {
+  cursor: url("./images/cursor.svg");
   width: 1000px;
   height: 1000px;
   background-color: rgb(255, 255, 255);
-  float: left;
+  justify-self: center;
 }
 
 h4 {
@@ -185,7 +186,7 @@ form {
   color: rgb(104, 104, 104);
 }
 
-.tool div {
+.slider-input {
   display: grid;
   grid-template-columns: 2fr 1fr;
   place-items: center;
@@ -193,6 +194,8 @@ form {
 .int {
   width: 25px;
   height: 25px;
+  justify-self: end;
+  margin-right: 3px;
 }
 
 .quick .color-palate {
@@ -224,4 +227,34 @@ form {
   .action {
     display: none;
   }
+}
+
+.color-history {
+  display: grid;
+  width: 100%;
+  margin-top: 1.7%;
+  height: 55%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  place-items: center;
+}
+
+.recent-color {
+  width: 90%;
+  height: 90%;
+  background-color: rgb(233, 233, 233);
+  margin: 2%;
+  padding: 2%;
+  border-radius: 0.2em;
+}
+
+.brushsize {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.preview {
+  width: 62px;
+  height: 62px;
+  border-radius: 0.2em;
 }

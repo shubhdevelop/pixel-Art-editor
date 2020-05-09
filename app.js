@@ -1,4 +1,6 @@
-let canvas = document.querySelector("canvas");
+let canvas = document.querySelector(".work");
+let preview = document.querySelector(".preview").getContext("2d");
+
 let color = document.querySelector("li input");
 let li = document.querySelector(".action");
 let ul = document.querySelector("ul");
@@ -11,6 +13,8 @@ let input = document.querySelector(".int");
 let slider = document.querySelectorAll(".slider");
 let p = document.querySelector("p");
 let getQuick = document.querySelector(".getQuick");
+let recentColor = document.querySelectorAll(".recent-color");
+
 let toggle = false;
 
 let brushState = {
@@ -18,21 +22,37 @@ let brushState = {
   color: "black",
   size: 30,
   lastPos: [],
+  recentcolor: ["white", "white", "white", "white", "white", "white"],
+  maxBrushSize: 4,
 };
 
 for (let i of pallets) {
   i.style = `background-color:${i.className}`;
   i.addEventListener("click", (e) => {
     brushState.color = i.className;
+    pushRecentColor(i.className);
   });
 }
 
 for (let i of slider) {
   i.addEventListener("input", (e) => {
     input.value = i.value;
-
     brushState.size = i.value;
   });
+}
+
+updateRecentColor();
+
+function updateRecentColor() {
+  console.log(brushState.recentcolor[brushState.recentcolor.length - 1]);
+
+  console.log(brushState.recentcolor);
+  for (i = 5; i >= 0; i--) {
+    recentColor[i].style.background =
+      brushState.recentcolor[brushState.recentcolor.length - 1 - i];
+  }
+
+  brushState.recentcolor.slice;
 }
 
 function getMousePos(canvas, evt) {
@@ -62,7 +82,6 @@ function draw(e) {
     let pos = getMousePos(canvas, e);
     brushState.lastPos[0] = pos.x;
     brushState.lastPos[1] = pos.y;
-    console.log(pos, "mouse");
 
     quick.style.height = 0;
     slider.value = input.value;
@@ -99,6 +118,7 @@ li.addEventListener("click", (e) => {
 
 color.addEventListener("input", (e) => {
   brushState.color = color.value;
+  pushRecentColor(color.value);
 });
 
 html.addEventListener("keypress", showQuick);
@@ -146,3 +166,44 @@ function noScroll(e) {
     e.preventDefault();
   }
 }
+
+function pushRecentColor(value) {
+  console.log("triggered", "with value", value);
+  console.log(brushState.recentcolor.length);
+  brushState.recentcolor.push(value);
+
+  updateRecentColor();
+}
+
+document.body.addEventListener("wheel", (e) => {
+  console.log(e);
+  preview.fillStyle = brushState.color;
+  if (e.altKey == true) {
+    if (e.deltaY == -100) {
+      if (brushState.size <= 96) {
+        brushState.size += 4;
+      }
+
+      if (
+        brushState.size > brushState.maxBrushSize &&
+        brushState.maxBrushSize < 100
+      ) {
+        brushState.maxBrushSize = brushState.size;
+      }
+      preview.fillRect(60, 40, brushState.size * 1.8, brushState.size);
+    } else {
+      if (brushState.size > 0) {
+        console.log(brushState.maxBrushSize);
+
+        preview.clearRect(
+          60,
+          40,
+          brushState.maxBrushSize * 1.8,
+          brushState.maxBrushSize
+        );
+        brushState.size -= 4;
+        preview.fillRect(60, 40, brushState.size * 1.8, brushState.size);
+      }
+    }
+  }
+});
