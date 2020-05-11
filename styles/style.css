@@ -250,6 +250,7 @@ form {
 }
 
 .recent-color {
+  cursor: pointer;
   width: 90%;
   height: 90%;
   background-color: rgb(233, 233, 233);

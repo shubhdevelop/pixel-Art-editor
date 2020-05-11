@@ -31,6 +31,19 @@ for (let i of slider) {
     brushState.size = i.value;
   });
 }
+/**
+ *
+ *
+ *
+ *
+ *
+ */
+for (let i of recentColor) {
+  i.addEventListener("click", (e) => {
+    color = i.classList;
+    brushState.color = color[1];
+  });
+}
 /*
  *
  *

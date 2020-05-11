@@ -2,6 +2,12 @@ import("../app.js");
 
 function updateRecentColor() {
   for (i = 5; i >= 0; i--) {
+    recentColor[i].setAttribute(
+      "class",
+      `recent-color ${
+        brushState.recentcolor[brushState.recentcolor.length - 1 - i]
+      }`
+    );
     recentColor[i].style.background =
       brushState.recentcolor[brushState.recentcolor.length - 1 - i];
   }
