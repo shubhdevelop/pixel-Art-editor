@@ -56,7 +56,7 @@
   background-color: red;
 }
 canvas {
-  cursor: url("./images/cursor.svg");
+  cursor: url("../images/cursor.svg") 5.5 5.5, auto ;
   width: 1000px;
   height: 1000px;
   background-color: rgb(255, 255, 255);
