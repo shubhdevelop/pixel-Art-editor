@@ -1,5 +1,6 @@
 let canvas = document.querySelector(".work");
 let color = document.querySelector("li input");
+let quickColor = document.querySelector(".colorQuick");
 let li = document.querySelector(".action");
 let ul = document.querySelector("ul");
 let cx = canvas.getContext("2d");
@@ -9,10 +10,13 @@ let getQuick = document.querySelector(".getQuick");
 let recentColor = document.querySelectorAll(".recent-color");
 let pallets = document.querySelectorAll(".color-palate div");
 let slider = document.querySelectorAll(".slider");
-let save = document.querySelector(".save");
+let undo = document.querySelector(".undo");
+let redo = document.querySelector(".redo");
 let quick = document.querySelector(".quick");
 let html = document.querySelector("html");
+let listItems = document.querySelectorAll(".listitems");
 let toggle = false;
+let isHidden = false;
 
 let brushState = {
   color: "black",

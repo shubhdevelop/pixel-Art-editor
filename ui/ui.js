@@ -74,7 +74,14 @@ li.addEventListener("click", transformLi);
  *
  *
  */
-color.addEventListener("input", changeCurrentColor);
+
+color.addEventListener("input", (e) => {
+  changeCurrentColor(e, color);
+});
+
+quickColor.addEventListener("input", (e) => {
+  changeCurrentColor(e, quickColor);
+});
 /*
  *
  *
@@ -92,5 +99,12 @@ input.addEventListener("input", changeCurrentSize);
  *
  *
  */
+undo.addEventListener("click", doUndo);
+/**
+ *
+ *
+ *
+ *
+ */
 
-save.addEventListener("click", undoFeature);
+redo.addEventListener("click", doRedo);
