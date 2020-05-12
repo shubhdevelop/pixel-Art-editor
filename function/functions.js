@@ -86,7 +86,7 @@ function draw(e) {
 
     //state management
 
-    temp.push([cx.fillStyle, brushState.size, pos.x, pos.y]);
+    brushState.temp.push([cx.fillStyle, brushState.size, pos.x, pos.y]);
   }
 }
 
@@ -111,9 +111,12 @@ function touchDraw(e) {
   undo.innerHTML = "undo";
   toggle = false;
   cx.fillStyle = brushState.color;
+  if (brushState.size % 2 != 0) {
+    brushState.size--;
+  }
   cx.fillRect(pos.x, pos.y, brushState.size / 2, brushState.size / 2);
 
-  temp.push([cx.fillStyle, brushState.size, pos.x, pos.y]);
+  brushState.temp.push([cx.fillStyle, brushState.size, pos.x, pos.y]);
 }
 
 /*
@@ -130,7 +133,6 @@ function touchDraw(e) {
 
 function noScroll(e) {
   if (e.target.nodeName == "CANVAS") {
-    e.preventDefault();
   }
 }
 

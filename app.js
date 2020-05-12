@@ -26,16 +26,16 @@ let brushState = {
   maxBrushSize: 4,
   undo: [],
   redo: [],
+  temp: [],
 };
 
-let temp = [];
-
 canvas.addEventListener("mouseup", (e) => {
-  brushState.undo.push(temp);
-  temp = [];
+  brushState.undo.push(brushState.temp);
+
+  brushState.temp = [];
 });
 
-canvas.addEventListener("touchup", (e) => {
-  brushState.undo.push(temp);
-  temp = [];
+canvas.addEventListener("touchend", (e) => {
+  brushState.undo.push(brushState.temp);
+  brushState.temp = [];
 });

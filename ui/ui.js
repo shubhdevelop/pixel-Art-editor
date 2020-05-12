@@ -113,6 +113,7 @@ input.addEventListener("input", changeCurrentSize);
  *
  */
 undo.addEventListener("click", doUndo);
+undo.addEventListener("touch", doUndo);
 /**
  *
  *
@@ -121,3 +122,4 @@ undo.addEventListener("click", doUndo);
  */
 
 redo.addEventListener("click", doRedo);
+redo.addEventListener("touch", doRedo);
